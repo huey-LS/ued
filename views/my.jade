@@ -1,0 +1,46 @@
+extends common/index
+block css
+  include common/css
+  link(href='/css/my/my.css',rel='stylesheet')
+block content
+  div#my.my.container
+    div.col-sm-3
+      img.img-circle.center-block(src= '/avatar/getAvatar?eid='+my.eid)
+      p.text-center= my.username + '('+my.eid+')'
+    div.col-sm-9
+      div
+        h4
+          strong= land('my_baseinfo')
+        dl.dl-horizontal
+          dt= land('username')
+          dd= my.username
+          dt= land('employee_id')
+          dd= my.eid
+          dt= land('sex')
+          dd= land('sex_array')[my.sex||0]
+          dt= land('position')
+          dd= my.position
+          dt= land('deparyment')
+          dd= my.deparyment
+          dt= land('jointime')
+          dd= my.jointime
+      div
+        h4
+          strong= land('my_contactway')
+        dl.dl-horizontal
+          dt= land('email')
+          dd
+            span.glyphicon.glyphicon-envelope
+            = my.email
+          dt= land('tel_extension')
+          dd
+            span.glyphicon.glyphicon-earphone
+            = my.tel_extension
+          dt= land('telephone')
+          dd
+            span.glyphicon.glyphicon-phone
+            = my.telephone
+          dt= land('wangwang')
+          dd= my.wangwang
+          dt= land('qq')
+          dd= my.qq

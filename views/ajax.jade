@@ -1,0 +1,9 @@
+mixin ajax(status, data) 
+  - if (status !== "200")
+    = '{"status":"' + status + '", error:'+data+'}'
+  - else 
+    = '{"status":"' + status + '", data:'+data+'}'
+- if(status && data)
+  +ajax(status, data)
+- else
+  = '{"status":"404"}'

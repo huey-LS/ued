@@ -1,0 +1,27 @@
+extends ../common/index
+block content
+  div.container
+    - if(edit_work)
+      form#reg.reg.w330(method='post')
+        div.form-group
+          lable(for='title')
+            = land('work_title')
+          input.form-control(type='text',disabled,name='title',id='title',value=edit_work.title)
+        div.form-group
+          lable(for='status')
+            = land('work_status')
+          select.form-control(name='status')
+            - each val,index in land('work_status_array')
+              - if(edit_work.status*1 === index)
+                option(value=index, selected)= val
+              - else
+                option(value=index)= val
+        div.form-group
+          lable(for='username')= land('username')
+          input.form-control(type='text',name='username',value=edit_work.username)
+          input.form-control(type='hidden', name='eid', value= edit_work.eid)
+        input.form-control(type='hidden',name='wid',value=edit_work.wid)
+        div.form-group
+          button= land('update')
+    - else
+      p.alert.alert-warning= land('nodate')

@@ -1,0 +1,12 @@
+extends common/index
+block css
+  include common/css
+  link(href='/css/login/login.css',rel='stylesheet')
+block content
+  div.container
+    form#login.login.form-signin(method='post')
+      h2.form-signin-heading= land('tologin')
+      input.form-control(type='text', name='username', placeholder= land('username'))
+      input.form-control(type='password', name='password', placeholder= land('password'))
+      input.hidden(type='hidden', name='redirect', value= redirect)
+      button.btn.btn-lg.btn-primary.btn-block(type='submit')= land('login')

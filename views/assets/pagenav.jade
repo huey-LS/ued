@@ -1,0 +1,84 @@
+mixin setUrl(content, page)
+  - if(content == '&laquo;')
+    a(href= '?page='+page)
+      | &laquo;
+  - else if(content == '&raquo;')
+    a(href= '?page='+page)
+      | &raquo;
+  - else
+    a(href= '?page='+page)= content
+
+mixin pagenav(page, count)
+  div.pagenav
+    - pageArray = [1,2,3,4,5,6,7,8,9]
+    ul.pagelist.pagination
+      - if(page == 1)
+        li.disabled.prev
+          span
+            | &laquo;
+      - else
+        li.prev
+          +setUrl('&laquo;', (page*1-1))
+      - if(count <= 9)
+        - pageArray = pageArray.slice(0, count)
+        - each val in pageArray
+          - if(val == page)
+            li.active
+              span= val
+          - else
+            li
+              +setUrl(val, val)
+      - else if(page <= 5)
+        - each val in pageArray
+          - if(val == 8)
+            li
+              span= '...'
+            li
+              +setUrl((count-1), (count-1))
+          - else if(val == 9)
+            li
+              +setUrl(count, count)
+          - else if(val == page)
+            li.active
+              span= val
+          - else
+            li
+              +setUrl(val, val)
+      - else if(page >= count - 5)
+        - each val in pageArray
+          - if(val == 3)
+            li
+              span= '...'
+          - if(val == 1 || val == 2)
+            li
+              +setUrl(val, val)
+          - else if(9 - val == count - page)
+            li.active
+              span= page
+          - else
+            li
+              +setUrl((count - 9 + val), (count - 9 + val))
+      - else
+        - each val in pageArray
+          - if(val == 3 || val == 8)
+            li
+              span= '...'
+          - if(val == 1 || val == 2)
+            li
+              +setUrl(val, val)
+          - else if(val == 8 || val == 9)
+            li
+              +setUrl((count-9+val), (count-9+val))
+          - else if(val == 5)
+            li.active
+              span= page
+          - else
+            li
+              +setUrl((page - 5 + val), (page - 5 + val))
+      - if(page == count)
+        li.disabled.next
+          span
+            | &raquo;
+      - else
+        li.next
+          +setUrl('&raquo;', (page*1+1))

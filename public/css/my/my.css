@@ -1,0 +1,13 @@
+.my{}
+.my h4{
+  border-bottom: 1px solid #ddd;
+}
+.my h4 strong{
+  border-bottom: 2px solid #000;
+}
+
+.glyphicon,
+.glyphicon:empty{width: 1.5em;}
+.glyphicon-envelope{color: #6cf;}
+.glyphicon-earphone{color: #6cf;}
+.glyphicon-phone{color: #6c9;}

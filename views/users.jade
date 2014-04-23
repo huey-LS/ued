@@ -1,0 +1,61 @@
+extends common/index
+include assets/pagenav
+
+block content
+  script(src='/js/search.js')
+  div.container
+    div.tool.clearfix
+      div.search.pull-left
+        form#search.form-inline.w330
+          div.form-group
+            select.form-control
+              option(value='wangwang')= land('wangwang')
+              option(value='username')= land('username')
+              option(value='eid')= land('eid')
+          div.form-group
+            label.sr-only= land('search_place')
+            input.form-control(type='search', placeholder= land('search_place'))
+          div.form-group
+            button.btn.btn-default= land('seach')
+      - if(user && user.type==1)
+        div.reg.pull-right
+          a.btn.btn-link(href='users/reg')= land('add')
+          a.btn.btn-link(href='users/reglist')= land('import')
+    - if (users.length > 0)
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th= land('employee_id')
+            th= land('username')
+            th= land('sex')
+            th= land('position')
+            th= land('wangwang')
+            th= land('qq')
+            th= land('tel_extension')
+            th= land('telephone')
+            th= land('jointime')
+            th= land('email')
+            - if(user && user.type==1)
+              th= land('other')        
+        tbody
+          each val,index in users
+            tr(userid=val.eid)
+              td= val.eid
+              td
+                a(href='/my/'+val.eid)= val.username
+              td= land('sex_array')[val.sex||0]
+              td= val.position
+              td= val.wangwang
+              td= val.qq
+              td= val.tel_extension
+              td= val.telephone
+              td= val.jointime
+              td
+                a(href= 'mailto:'+val.email)= val.email
+              - if(user && user.type==1)
+                td
+                  a.btn.btn-link.btn-xs(href='/users/edit?eid='+val.eid)= land('edit')
+      +pagenav(page, count, search)
+    - else
+      p.alert.alert-warning= land('nodate')
+

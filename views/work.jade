@@ -1,0 +1,56 @@
+extends common/index
+block content
+  div.container
+    div.tool.clearfix
+      div.seach.pull-left
+        form#seach.form-inline.w330
+          div.form-group
+            label.sr-only= land('work_title')
+            input.form-control(type='search', name='title', placeholder= land('work_title'))
+          div.form-group
+            button.btn.btn-default= land('seach')
+      - if(user && user.type==1)
+        div.reg.pull-right
+          a.btn.btn-link(href='work/app')= land('add')
+    - if (work.length > 0)
+      table.table.table-hover
+        thead
+          tr
+            th= land('work_title')
+            th= land('work_content')
+            th= land('work_request')
+            th= land('work_status')
+            th= land('work_jointime')
+            th= land('work_starttime')
+            th= land('work_needtime')
+            th= land('work_endtime')
+            - if(user && user.type==1)
+              th= land('other')
+                
+        tbody
+          mixin list(val)
+            td= val.title
+            td= val.content
+            td= val.request
+            td= land('work_status_array')[val.status]
+            td= val.jointime
+            td= val.starttime
+            td= val.needtime
+            td= val.endtime
+            - if(user && user.type==1)
+              td
+                a.btn.btn-link.btn-xs(href='/work/edit?wid='+val.wid)= land('edit')
+                a.btn.btn-link.btn-xs(href='/work/assign?wid='+val.wid)= land('assign')
+          each val,index in work
+            case val.status
+              when '0'
+                tr.warning(workid=val.wid)
+                  +list(val)
+              when '3'
+                tr.success(workid=val.wid)
+                  +list(val)
+              default
+                tr(workid=val.wid)
+                  +list(val)
+    - else
+      p.alert.alert-warning= land('nodate')

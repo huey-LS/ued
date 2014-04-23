@@ -1,0 +1,47 @@
+extends ../common/index
+block content
+  div.container
+    form#reg.reg.w330(method='post')
+      div.form-group
+        lable(for='eid')
+          = land('employee_id')
+        input.form-control(type='text',name='eid',id='eid')
+      div.form-group
+        lable(for='username')
+          = land('username')
+        input.form-control(type='text',name='username')
+      div.form-group
+        lable(for='sex')
+          = land('sex')
+        select.form-control(name='sex')
+          option(value=1)= land('male')
+          option(value=2)= land('female')
+      div.form-group
+        lable(for='email')
+          = land('email')
+        input.form-control(type='email',name='email')
+      div.form-group
+        lable(for='tel_extension')
+          = land('tel_extension')
+        input.form-control(type='text', name='tel_extension')
+      div.form-group
+        lable(for='telephone')
+          = land('telephone')
+        input.form-control(type='text',name='telephone')
+      div.form-group
+        lable(for='position')
+          = land('position')
+        select.form-control(name='position')
+          option= land('designer')
+          option= land('frontEndDeveloper')
+      div.form-group
+        lable(for='wangwang')
+          = land('wangwang')
+        input.form-control(type='text',name='wangwang')
+      div.form-group
+        lable(for='qq')
+          = land('qq')
+        input.form-control(type='text',name='qq')
+      div.form-group
+        button
+          = land('register')

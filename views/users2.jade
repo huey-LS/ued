@@ -1,0 +1,64 @@
+extends common/index
+include assets/pagenav
+
+block css
+  include common/css
+  link(href='/css/users/users.css',rel='stylesheet')
+
+block content
+  script(src='/js/search.js')
+  div.container
+    div.tool.clearfix
+      div.search.pull-left
+        form#search.form-inline.w330
+          div.form-group
+            select.form-control
+              option(value='wangwang')= land('wangwang')
+              option(value='username')= land('username')
+              option(value='eid')= land('eid')
+          div.form-group
+            label.sr-only= land('search_place')
+            input.form-control(type='search', placeholder= land('search_place'))
+          div.form-group
+            button.btn.btn-default= land('seach')
+      - if(user && user.type==1)
+        div.reg.pull-right
+          a.btn.btn-link(href='users/reg')= land('add')
+          a.btn.btn-link(href='users/reglist')= land('import')
+    - if (users.length > 0)
+      div.users
+        each val,index in users
+          - if(val.inoffice === '0')
+            div.user.user_unoffice.clearfix
+              +user(val)
+          - else
+            div.user.clearfix
+              +user(val)
+      +pagenav(page, count, search)
+    - else
+      p.alert.alert-warning= land('nodate')
+
+mixin user(val)
+  div.avatar
+    img.img-circle(src= '/avatar/getAvatar?eid='+val.eid)
+  div.intro
+    p.info
+      a.pr30(href='/my/'+val.eid)= val.username
+      span.employee_id.pr30= land('eid')+':'
+        em= val.eid
+      span.pr30= land('position') + ':' + (val.position||'')
+      span.pr30= land('wangwang') + ':' + (val.wangwang||'')
+    p.contact
+      span.tel_extension.pr30
+        span.glyphicon.glyphicon-earphone
+        span= val.tel_extension
+      span.telephone.pr30
+        span.glyphicon.glyphicon-phone
+        span= val.telephone
+      span.email.pr30
+        span.glyphicon.glyphicon-envelope
+        a(href= 'mailto:'+val.email)= val.email
+  div.operation
+    a.btn.btn-primary(href='/my/'+val.eid)= land('look_detail')
+    - if(user && user.type==1)    
+      a.btn.btn-link.btn-xs(href='/users/edit?eid='+val.eid)= land('edit')

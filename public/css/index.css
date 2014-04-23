@@ -1,0 +1,33 @@
+.w990{width: 990px;}
+.w760{width: 760px;}
+.w330{width: 330px;}
+
+.search{}
+.search select{
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.search input{
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.search button{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.glyphicon,
+.glyphicon:empty{width: 1.5em;}
+.glyphicon-envelope{color: #6cf;}
+.glyphicon-earphone{color: #6cf;}
+.glyphicon-phone{color: #6c9;}
+
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}

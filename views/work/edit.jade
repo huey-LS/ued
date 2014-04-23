@@ -1,0 +1,31 @@
+extends ../common/index
+block content
+  div.container
+    - if(edit_work)
+      form#reg.reg.w330(method='post')
+        div.form-group
+          lable(for='title')
+            = land('work_title')
+          input.form-control(type='text',name='title',id='title',value=edit_work.title)
+        div.form-group
+          lable(for='content')
+            = land('work_content')
+          textArea.form-control(type='text',name='content')= edit_work.content
+        div.form-group
+          lable(for='request')
+            = land('work_request')
+          input.form-control(type='request',name='request',value=edit_work.request)
+        div.form-group
+          lable(for='jointime')
+            = land('work_jointime')
+          input.form-control(type='text',name='jointime',value=edit_work.jointime)
+        div.form-group
+          lable(for='needtime')
+            = land('work_needtime')
+          input.form-control(type='text',name='needtime',value=edit_work.needtime)
+        input.form-control(type='hidden',name='wid',value=edit_work.wid)  
+        div.form-group
+          button
+            = land('add')
+    - else
+      p.alert.alert-warning= land('nodate')

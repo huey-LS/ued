@@ -1,0 +1,19 @@
+block header
+  div#header.header
+    div.navbar.navbar-default.navbar-static-top
+      div.container
+        div.navbar-header
+          a.navbar-brand(href='/')= land('site_name')
+        div.navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/users')= land('users')
+          ul.nav.navbar-nav.navbar-right
+            - if(user && user.eid && user.username)
+              li
+                a(href='/my')= user.username
+              li
+                a(href='/login')= land('login_out')
+            - else
+              li
+                // a(href='/login')= land('tologin')

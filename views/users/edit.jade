@@ -1,0 +1,57 @@
+extends ../common/index
+block content
+  div.container
+    form#edit.edit.w330(method='post')
+      div.form-group
+        lable(for='eid')
+          = land('employee_id')
+        input.form-control(type='text', name='eid', value=edit_user.eid)
+      div.form-group
+        lable(for='username')
+          = land('username')
+        input.form-control(type='text', name='username', value=edit_user.username)
+      div.form-group
+        lable(for='sex')
+          = land('sex')
+        select.form-control(name='sex')
+          option(value=1)= land('male')
+          option(value=2)= land('female')
+      div.form-group
+        lable(for='email')
+          = land('email')
+        input.form-control(type='text', name='email', value=edit_user.email)
+      div.form-group
+        lable(for='tel_extension')
+          = land('tel_extension')
+        input.form-control(type='text', name='tel_extension', value=edit_user.tel_extension)
+      div.form-group
+        lable(for='telephone')
+          = land('telephone')
+        input.form-control(type='text',name='telephone', value=edit_user.telephone)
+      div.form-group
+        lable(for='position')
+          = land('position')
+        select.form-control(name='position')
+          option(value=1)= land('designer')
+          option(value=2)= land('frontEndDeveloper')
+      div.form-group
+        lable(for='wangwang')
+          = land('wangwang')
+        input.form-control(type='text', name='wangwang', value=edit_user.wangwang)
+      div.form-group
+        lable(for='qq')
+          = land('qq')
+        input.form-control(type='text', name='qq', value=edit_user.qq)
+      div.form-group
+        lable(for='inoffice')
+          = land('inoffice')
+        select.form-control(type='text', name='inoffice', value=edit_user.inoffice)
+          - if(edit_user.inoffice === '0')
+            option(value='0' selected)= land('inoffice_array')[0]
+            option(value='1')= land('inoffice_array')[1]
+          - else
+            option(value='0')= land('inoffice_array')[0]
+            option(value='1' selected)= land('inoffice_array')[1]
+      div
+        button
+          =land('update')
