@@ -29,6 +29,16 @@ module.exports = {
     title: {show: 1, check: ['string']},
     link: {show: 1, check: ['url']}
   },
+  alibaba_workers:{
+    alibaba_id: {show: 0, check: ['number']},
+    username: {show: 1, check: ['string']},
+    wangwang: {show: 1, check: ['string']},
+    email: {show: 1, check: ['email']},
+    tel_extension: {show: 1, check: ['number']},
+    telephone: {show: 1, check: ['number']},
+    deparyment: {show: 1, check: ['number']},
+    interface_person: {show: 1, check: ['string']}
+  },
   check: function(){
   	return true;
   }

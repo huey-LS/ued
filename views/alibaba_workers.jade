@@ -3,14 +3,14 @@ include assets/pagenav
 
 block css
   include common/css
-  link(href='/css/users/users.css',rel='stylesheet')
+  link(href='/css/alibaba_workers/index.css',rel='stylesheet')
 
 block content
   script(src='/js/search.js')
   div.container
     div.tool.clearfix
       div.search.pull-left
-        form#search.form-inline.w330(action='/users/s/')
+        form#search.form-inline.w330(action='/alibaba_workers/s/')
           div.form-group
             label.sr-only= land('search_place')
             input.form-control(type='search', placeholder= land('search_place'))
@@ -18,31 +18,23 @@ block content
             button.btn.btn-default= land('seach')
       - if(user && user.type==1)
         div.reg.pull-right
-          a.btn.btn-link(href='users/reg')= land('add')
-          a.btn.btn-link(href='users/reglist')= land('import')
+          a.btn.btn-link(href='alibaba_workers/reglist')= land('import')
     - if (users.length > 0)
       div.users
         each val,index in users
-          - if(val.inoffice === '0')
-            div.user.user_unoffice.clearfix
-              +user(val)
-          - else
-            div.user.clearfix
-              +user(val)
+          div.user.clearfix
+            +user(val)
       +pagenav(page, count, search)
     - else
       p.alert.alert-warning= land('nodate')
 
 mixin user(val)
-  div.avatar
-    img.img-circle(src= '/avatar/getAvatar?eid='+val.eid)
   div.intro
     p.info
-      a.min_w100(href='/my/'+val.eid)= val.username
-      span.employee_id.min_w200= land('eid')+':'
-        em= val.eid
-      span.min_w260= land('position') + ':' + (val.position||'')
-      span.min_w200= land('wangwang') + ':' + (val.wangwang||'')
+      span.min_w100= val.username
+      span.min_w200= land('alibaba_deparyment') + ':' + (val.deparyment||'')
+      span.min_w260= land('wangwang') + ':' + (val.wangwang||'')
+      span.min_w200= land('interface_person') + ':' + (val.interface_person||'')
     p.contact
       span.tel_extension.min_w100
         span.glyphicon.glyphicon-earphone
@@ -54,6 +46,5 @@ mixin user(val)
         span.glyphicon.glyphicon-envelope
         a(href= 'mailto:'+val.email)= val.email
   div.operation
-    a.btn.btn-primary(href='/my/'+val.eid)= land('look_detail')
     - if(user && user.type==1)    
-      a.btn.btn-link.btn-xs(href='/users/edit?eid='+val.eid)= land('edit')
+      a.btn.btn-link.btn-xs(href='/alibaba_workers/edit?id='+val._id)= land('edit')

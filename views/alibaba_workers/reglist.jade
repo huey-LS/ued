@@ -1,0 +1,18 @@
+extends ../common/index
+block content
+  div.container
+    ul
+      li= land('username')
+      li= land('telephone')
+      li= land('tel_extension')
+      li= land('tel_extension')
+      li= land('email')
+      li= land('wangwang')
+      li= land('alibaba_deparyment')
+      li= land('interface_person')
+    form#reglist.reglist(method='post')
+      div.form-group
+        textArea.form-control(name='content')
+      div.form-group
+        button
+          = land('register')

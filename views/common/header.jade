@@ -3,11 +3,21 @@ block header
     div.navbar.navbar-default.navbar-static-top
       div.container
         div.navbar-header
-          a.navbar-brand(href='/')= land('site_name')
+          img(src='/images/logo.png', style='height:50px;')
         div.navbar-collapse.collapse
           ul.nav.navbar-nav
-            li
-              a(href='/users')= land('users')
+            - if(nav && nav == 'users')
+              li.active
+                a(href='/users')= land('users')
+            - else
+              li
+                a(href='/users')= land('users')
+            - if(nav && nav == 'alibaba_workers')
+              li.active
+                a(href='/alibaba_workers')= land('alibaba_workers')
+            - else
+              li
+                a(href='/alibaba_workers')= land('alibaba_workers')
           ul.nav.navbar-nav.navbar-right
             - if(user && user.eid && user.username)
               li

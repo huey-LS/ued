@@ -2,15 +2,16 @@
 .w760{width: 760px;}
 .w330{width: 330px;}
 
+.container .navbar-header{
+  margin-right: 20px;
+}
+
 .search{}
 .search select{
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 .search input{
-  border-left: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
   border-right: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;

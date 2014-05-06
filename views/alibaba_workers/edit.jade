@@ -1,0 +1,36 @@
+extends ../common/index
+block content
+  div.container
+    form#edit.edit.w330(method='post')
+      input.form-control(type='hidden', name='alibaba_id', value=edit_user._id)
+      div.form-group
+        lable(for='username')
+          = land('username')
+        input.form-control(type='text', name='username', value=edit_user.username)
+      div.form-group
+        lable(for='email')
+          = land('email')
+        input.form-control(type='text', name='email', value=edit_user.email)
+      div.form-group
+        lable(for='tel_extension')
+          = land('tel_extension')
+        input.form-control(type='text', name='tel_extension', value=edit_user.tel_extension)
+      div.form-group
+        lable(for='telephone')
+          = land('telephone')
+        input.form-control(type='text',name='telephone', value=edit_user.telephone)
+      div.form-group
+        lable(for='wangwang')
+          = land('wangwang')
+        input.form-control(type='text', name='wangwang', value=edit_user.wangwang)
+      div.form-group
+        lable(for='deparyment')
+          = land('alibaba_deparyment')
+        input.form-control(type='text', name='deparyment', value=edit_user.deparyment)
+      div.form-group
+        lable(for='interface_person')
+          = land('interface_person')
+        input.form-control(type='text', name='interface_person', value=edit_user.interface_person)
+      div
+        button
+          =land('update')

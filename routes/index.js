@@ -11,6 +11,7 @@ module.exports = function(app){
   });
 
   require('./users')(app);
+  require('./alibaba_workers')(app);
   
   require('./work')(app);
   

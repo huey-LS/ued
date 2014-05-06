@@ -2,7 +2,7 @@ module.exports = {
   'site_name': 'site',
 
   'work': '工作流',
-  'users': '通讯录',
+  'users': '员工通讯录',
 
   'login': '登陆',
   'unlogin': '未登陆',
@@ -25,6 +25,7 @@ module.exports = {
   'deparyment': '部门',
   'position': '职位',
   'qq': 'QQ',
+
 
   'add': '添加',
   'register': '注册',
@@ -61,5 +62,10 @@ module.exports = {
   'work_jointime': '业务接受时间',
   'work_starttime': '业务开始时间',
   'work_needtime': '业务评估时间',
-  'work_endtime': '业务结束时间'
+  'work_endtime': '业务结束时间',
+
+  //alibaba_workers
+  'alibaba_workers': '需求通讯录',
+  'interface_person': '接口人',
+  'alibaba_deparyment': '类目'
 }
